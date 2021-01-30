@@ -7,9 +7,9 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
 
 
 
- $query = mysqli_query($link,"SELECT * FROM users WHERE id = '".$_COOKIE['id']."' LIMIT 1");
+ $query = pg_query($dbconn,"SELECT * FROM users WHERE id = '".$_COOKIE['id']."' LIMIT 1");
 
-    $userdata = mysqli_fetch_assoc($query);
+    $userdata = pg_fetch_assoc($query);
  if(($userdata['hash'] !== $_COOKIE['hash']) or ($userdata['id'] !== $_COOKIE['id']))
 
 {
@@ -31,17 +31,17 @@ echo "<br>";
 }
 else
 {
- header("Location: http://130.61.60.226/login5.php");
+ header("Location: studentlogin.php");
 }
 
 
 
 
-$query=mysqli_query($link,"select * from videoavail where student_id='2' and aval='1'");
+$query=pg_query($dbconn,"select * from videoavail where student_id='2' and aval='1'");
 
 
 
-while($all_video=mysqli_fetch_array($query))
+while($all_video=pg_fetch_array($query))
 
 
 

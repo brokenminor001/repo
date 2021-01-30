@@ -23,7 +23,7 @@ function generateCode($length=6) {
 
 $data = pg_fetch_assoc($query);
 
-echo $data['password'];
+
 
 
 if($data['password'] === md5(md5($_POST['password'])))
@@ -50,7 +50,7 @@ if($data['password'] === md5(md5($_POST['password'])))
 
         # Переадресовываем браузер на страницу проверки нашего скрипта
 
-        header("Location: test.php"); exit();
+        header("Location: mainstudent.php"); exit();
 
     }
 
