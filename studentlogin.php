@@ -19,9 +19,9 @@ function generateCode($length=6) {
 
 }
 
-  $query = mysqli_query($link,"SELECT id, password FROM users WHERE login='".$_POST['login']."' LIMIT 1");
+  $query = pg_query($dbconn,"SELECT id, password FROM users WHERE login='".$_POST['login']."' LIMIT 1");
 
-$data = mysqli_fetch_assoc($query);
+$data = pg_fetch_assoc($query);
 
 echo $data['password'];
 
@@ -36,7 +36,7 @@ if($data['password'] === md5(md5($_POST['password'])))
 
 
 
-        mysqli_query($link, "UPDATE users SET hash='".$hash."' WHERE id='".$data['id']."'");
+        pg_query($dbconn,"UPDATE users SET hash='".$hash."' WHERE id='".$data['id']."'");
 
 
 
